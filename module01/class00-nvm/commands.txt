@@ -3,4 +3,4 @@ nvm install --lts -> install the long-term support (full version)
 nvm list -> You can list all nvm version that you've them
 nvm use 18 -> With this command you can use specific version nvm 
 nvm alias default 18  -> this command you standard nvm version to all system 
-
+node -v > .nvmrc -> you created version node version for your enviroment    
