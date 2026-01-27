@@ -9,11 +9,13 @@ const DFAULT_OPTIONS = {
 class File {
    static async csvToJson(FilePath) {
     const content = await readFile(FilePath, "utf8")
-    // console.log('content', {content})
     const validation = this.isValid(content)
     if (!validation.valid) {
         throw new Error(validation.error)
     }
+
+    const result = this.parseCSVToJSON(content)
+    return result
   }
 
   static isValid(csvString, options = DFAULT_OPTIONS) {
@@ -41,7 +43,30 @@ class File {
             valid: false
         }
     }
+    return {valid: true}
 
   }
+
+  static parseCSVToJSON(csvString){
+    const lines = csvString.split(/\r?\n/)
+    // remove the first line (header)
+    const firstLine = lines.shift()
+    const header = firstLine.split(",")
+
+    const users = lines.map(line=> {
+        const columns = line.split(',')
+        const user = {}
+        for (const index in columns){
+            user[header[index]] = columns[index] 
+        }
+        return user
+    })
+
+    return users
+
+
+
+  }
+
 }
 module.exports = File;

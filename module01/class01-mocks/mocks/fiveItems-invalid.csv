@@ -1,6 +1,7 @@
-id,name, profession,age
+id,name,profession,age
 1,John Doe,Engineer,30
 2,Jane Smith,Doctor,25
 3,Bob Johnson,Artist,40
 4,Alice Williams,Teacher,28
 5,Michael Brown,Lawyer,35
+6,Invalid Entry,NoAge,20
